@@ -1,10 +1,24 @@
 Rails.application.routes.draw do
+  get 'welcome/home'
+
+  get 'welcome/about'
+
+  get 'welcome/signup'
+
+  get 'welcome/open_tasks'
+
+  get 'welcome/my_tasks'
+
+  get 'welcome/create_task'
+
+  get 'signup'  => 'users#new'
+
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'users#index'
+  root 'welcome#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
