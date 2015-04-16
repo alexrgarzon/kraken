@@ -1,23 +1,90 @@
-<div class="center jumbotron">
-<h1>SquidMinion: The Superior Task Publishing Service</h1>
+<div class="center jumbotron squidb" style="">  
+<h3>Squid Runner: The Superior Task Publishing Service</h3>
 
-<h2>Hello peeps</h2>
 
-<h1>Welcome - This is the Login Page </h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
 
   <% if user_signed_in? %>
-  <li>
-  hi there
-  hey 
   
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-  </li>
+  
+  <p>Hey there <%= current_user.email %>, welcome back! You're unique ID number is: <%= current_user.id %>.</p>
+  </br></br>
+  <h5>Tasks you accepted:</h5>
+  <% if !@myAcceptedTasks.empty? %>
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Title</th>
+          <th>User</th>
+          <th>Payment description</th>
+          <th>Category</th>
+          <th>Runner</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @myAcceptedTasks.each do |task| %>
+          <tr>
+            <td><%= task.description %></td>
+            <td><%= task.title %></td>
+            <td><%= task.user_id %></td>
+            <td><%= task.payment_description %></td>
+            <td><%= task.category %></td>
+            <td><%= task.runner_id %></td>
+            <td><%= link_to 'Show', task %></td>
+            <td><%= link_to 'Edit', edit_task_path(task) %></td>
+            <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <h6> ---You have yet to accept a task, people are waiting for your help!--- </h6>
+  <% end %>
+  </br></br>
+  <h5>Tasks you published: </h5>
+  <% if !@myPublishedTasks.empty? %>
+  hello
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Title</th>
+          <th>User</th>
+          <th>Payment description</th>
+          <th>Category</th>
+          <th>Runner</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @myPublishedTasks.each do |task| %>
+          <tr>
+            <td><%= task.description %></td>
+            <td><%= task.title %></td>
+            <td><%= task.user_id %></td>
+            <td><%= task.payment_description %></td>
+            <td><%= task.category %></td>
+            <td><%= task.runner_id %></td>
+            <td><%= link_to 'Show', task %></td>
+            <td><%= link_to 'Edit', edit_task_path(task) %></td>
+            <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+  <h6> ---You have yet to publish a task, people are waiting to help you!--- </h6>
+  <% end %>
+
+
+
 	<% else %>
-  <li>
-  hello there
-  <%= link_to('Login', new_user_session_path)  %>
-  </li>
-</div>
+  </br>
+  <p>Hey there, log in or sign up to start Squid Running!</p>
 
 	<% end %>
+
+</div>

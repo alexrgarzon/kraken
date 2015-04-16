@@ -45,8 +45,10 @@ Rails.application.configure do
 
   #more devise
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = false
   config.action_mailer.smtp_settings = {
   address: "smtp.gmail.",
+  #port: 2525,
   port: 587,
   domain: ENV["GMAIL_DOMAIN"],#{}"gmail.com",#ENV["GMAIL_DOMAIN"],
   authentication: "plain",

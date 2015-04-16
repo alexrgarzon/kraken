@@ -1,6 +1,10 @@
 source 'https://rubygems.org'
 
 
+#bootstrap
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+
 #added by ARG
 gem 'ruby'
 
