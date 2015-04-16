@@ -18,8 +18,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "Home",  welcome_home_path  %></li>
           <li><%= link_to "About",   welcome_about_path %></li>
-          <li><%= link_to "OpenTasks", '#' %></li>
-          <li><%= link_to "Sign up now", signup_path %></li>
+          <li><%= link_to "OpenTasks", tasks_path %></li>
           <% if logged_in? %>
                 <li><%= link_to "Profile", current_user %></li>
                 <li><%= link_to "Settings", edit_user_path(current_user) %></li>
@@ -29,6 +28,7 @@
                 </li>
           <% else %>
             <li><%= link_to "Log in", login_path %></li>
+            <li><%= link_to "Sign up", signup_path %></li>
           <% end %>
         </ul>
       </nav>
@@ -37,6 +37,7 @@
 
   <div class="center jumbotron">
   <h2>Kraken: The Superior Task Publishing Service</h2>
+  <p>
 </div>
 
 </body>

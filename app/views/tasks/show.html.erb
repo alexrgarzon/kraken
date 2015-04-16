@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @task.description %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @task.title %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @task.user_id %>
+</p>
+
+<p>
+  <strong>Payment description:</strong>
+  <%= @task.payment_description %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @task.category %>
+</p>
+
+<p>
+  <strong>Runner:</strong>
+  <%= @task.runner_id %>
+</p>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>
