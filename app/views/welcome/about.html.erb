@@ -1,2 +1,141 @@
-<h1>Welcome#about</h1>
-<p>Find me in app/views/welcome/about.html.erb</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Kraken - About</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+  <%= render 'layouts/header' %>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/post-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="page-heading">
+                        <h1>Design Document</h1>
+                        <hr class="small">
+                        <span class="subheading">This is what we want to build.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1>Elevator Speech and Overview</h1>
+                <p>Currently awesome sites exist such as TaskRabbit and AirTasker for Runners and Posters to interact and mutually benefit. Posters get tasks completed for them, and Runners get paid for doing them, it’s a win-win, and the best option for posters compared to the alternatives. Unfortunately, at Princeton and other colleges alike such sites haven’t been so popular among student communities and that’s a pity. We aim to create a service and site that is better targeted at college campuses by taking advantage of student trust, nearby convenience, and mutual knowledge of campus affairs. These three major factors are not present in the outside world, but a service wanting to flourish on college campuses must necessarily take advantage of them to succeed and that is what we plan to do!</p>
+                <h1>Functionality</h1>
+                <h2>Create Account</h2>
+                <p>Create a profile, including all of the required information (name and email) and the GUID is automatically generated; may also include photo</p>
+                <h2>Browse/Search for tasks</h2>
+                <p>Based on locations (need a Princeton map); based on category of task; sorting by compensation, location distance, review scores</p>
+                <h2>Post/Edit/Delete tasks</h2>
+                <p>Once it’s accepted, you can’t edit it; if you change your mind you have to get in touch with the runner and figure out a way to resolve it. </p>
+                <h2>Accept/Un-accept(undo acceptance) tasks</h2>
+                <p>Users can decide to un-accept a task and that would re-list the task</p>
+                <h2>Make Reviews</h2>
+                <p>Both for posters and runners</p>
+                <h2>Update Profile/Account</h2>
+                <p>can edit any of the account details other than the ID</p>
+                <h2>Notifications</h2>
+                <p>email notifications and pop-up notifications on mobile end</p>
+                <h1>Design</h1>
+                <p>Front End: We will be using the Bootstrap framework for web development. </p>
+                <p>Backend: The backend will be designed in Ruby on Rails, using a MySQL database and hosted on Heroku. The web app will be built in HTML, CSS, and JS/JQuery. </p>
+                <h1>Data Organization</h1>
+                <h2>Users</h2>
+                <p>ID (GUID); Name (string); Email (NetID)(email); Password (string) (can use salt hashing); Phone (string); Ratings (double); Reviews (string); Photo (?); Tasks Posted (array of GUIDs); Tasks Accepted (array of GUIDs)</p>
+                <h2>Tasks</h2>
+                <p>Poster ID (GUID); Acceptor ID (GUID or NULL if still unassigned); Status (int) //open or assigned; Compensation type (int) // 0 for integer price, 1 for non-monetary favor; Compensation description (string) // non-monetary favor description; Location (string); Category (int) // general category of task; Description (string) // desc of task</p>
+                <h1>Target User</h1>
+                <p>Princeton Students primarily. Those who have errands to do but are either relatively lazy or short on time are prospective sellers, and those who want to make pocket money are prospective task runners. later college/high school students, people living in a community. Eventually other city-dwellers</p>
+                <h1>Competitive Analysis</h1>
+                <h2>Competitors</h2>
+                <p>https://www.taskrabbit.com</p>
+                <p>Posts on Free & For Sale (Facebook)</p>
+                <p>http://www.job-runners.com/</p>
+                <p>http://collegelabor.org</p>
+                <p>https://www.zaarly.com</p>
+                <p>HomeJoy</p>
+                <p>AirTasker</p>
+                <p>complete list available at https://www.crunchbase.com/organization/taskrabbit/competitors</p>
+                <h2>Our Competitive Advantage</h2>
+                <p>Trust in fellow students, background checks unnecessary, reviews serve as additional measure for a runners reliability, link account to their email(netid), can’t make multiple. Moreover, Convenience - we all live near each other/on campus. Tasks generally self-explanatory. We don’t process payments initially</p>
+                <h1>Timeline/Milestones</h1>
+                <p><ol>
+              	<li>March 2-6: Initial meeting with instructor. </li>
+              	<p>we met with BWK to run the idea through and searched for the third teammate. formed a 3-person team, met and discussed design document. </p>
+              	<li>March 9-13: Initial web site, elevator speech, project overview document. </li>
+              	<li>Spring Break:						</li>
+                <p>Design document complete</p>
+              	<p>Server running					</p>
+              	<p>Versioning (Git) running </p>
+              	<li>March 23-27: Initial TA meeting </li>
+              	<li>April 10: Prototype. </li>
+              	<li>April 24: Alpha test.  </li>
+              	<li>May 1: Beta test.  </li>
+              	<li>May 5-8: Demo days.  </li>
+              	<p>ready a working version of the website</p>
+              	<p>fix bugs from beta tests</p>
+              	<li>May 12: Dean's Date, final submission. </li>
+              	<li>Submission: the code you wrote, something to entice new users, a short document describing implementation and installation, and a longer report on how the project and the team worked out and what you learned.</li>
+              </ol></p>
+                <h1>Risks and Open Issues</h1>
+                <p>All group members only have a basic working knowledge of Ruby </p>
+                <p>No member has formal experience with Rails </p>
+                <p>Limited experience with web</p>
+                <p>Information security issues</p>
+                <p>Students trolling on the website</p>
+                <p>Browser compatibility (we’ll focus on supporting Firefox and Chrome, then maybe Safari, no group member has Internet Explorer, Opera, etc)</p>
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>

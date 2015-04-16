@@ -7,7 +7,16 @@
         <li><%= link_to "CreateTask", '#' %></li>
         <li><%= link_to "OpenTasks", '#' %></li>
         <li><%= link_to "About",   welcome_about_path %></li>
-        <li><%= link_to "Log in", '#' %></li>
+        <% if logged_in? %>
+              <li><%= link_to "Profile", current_user %></li>
+              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Log out", logout_path, method: "delete" %>
+              </li>
+        <% else %>
+          <li><%= link_to "Log in", login_path %></li>
+        <% end %>
       </ul>
     </nav>
   </div>
