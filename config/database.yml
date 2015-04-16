@@ -81,8 +81,8 @@ test:
 production:
   <<: *default
   database: kraken_production
-  username: kraken
-  password:
+  #username: kraken
+  #password:
 
   #password: <%= ENV['KRAKEN_DATABASE_PASSWORD'] %>
 

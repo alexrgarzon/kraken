@@ -76,4 +76,34 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # for devise
+  config.action_mailer.default_url_options = { :host => 'secret-chamber-2450.herokuapp.com' }
+
+  #might need this too
+  Rails.application.routes.default_url_options[:host] = 'secret-chamber-2450.herokuapp.com'
+
+  #more devise
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default :charset => "utf-8"
+
+  config.action_mailer.smtp_settings = {
+  address: "smtp.gmail.com",
+  port: 587,
+  domain: ENV["GMAIL_DOMAIN"],
+  authentication: "plain",
+  enable_starttls_auto: true,
+  user_name: ENV["GMAIL_USERNAME"],
+  password: ENV["GMAIL_PASSWORD"]
+  }
+
+  #you have to tell Rails to serve the assets itself. Server software (eg. Nginx or Apache) do it for you on environments like Heroku, but locally you should let Rails do it.
+  #But make sure you set it back to false before pushing your code to production!
+  config.serve_static_files = true
+
+  #When testing locally your production environment, you have to compile the assets locally. Simply run the command below:
+  #RAILS_ENV=production bundle exec rake assets:precompile
+
 end
