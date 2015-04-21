@@ -1,6 +1,30 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index]
+  before_action :set_task, only: [:accept, :acceptTask, :unaccept, :unacceptTask, :show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+
+  before_filter :only => [:new, :create] do 
+    redirect_to :welcome_index unless current_user #&& current_user.admin?
+  end 
+
+  #before_filter redirect_to :welcome_index unless current_user, only: [:new, :create]
+  #before_filter :redirect, only: [:new, :create]
+
+  before_filter only: [:edit, :update] do 
+    redirect_to :welcome_index unless current_user && current_user.id == @task.user_id || current_user.admin?
+  end
+
+  before_filter only: [:destroy] do 
+    redirect_to :welcome_index unless current_user && current_user.admin? #&& current_user.admin?
+  end
+
+  before_filter only: [:accept,:acceptTask] do
+    redirect_to :tasks unless current_user && @task.runner_id==0 && current_user.id != @task.runner_id
+  end
+
+  before_filter only: [:unaccept,:unacceptTask] do
+    redirect_to :tasks unless current_user && @task.runner_id!=0 && current_user.id == @task.runner_id
+  end
+
 
   # GET /tasks
   # GET /tasks.json
@@ -11,6 +35,16 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+  end
+
+  # PUT /tasks/1
+  # PUT /tasks/1.json
+  def accept
+    # @task.runner_id = current_user.id
+    # respond_to do |format|
+    #   format.html { redirect_to tasks_url, notice: 'Task was successfully accepted.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   # GET /tasks/new
@@ -26,6 +60,8 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
+    @task.user_id = current_user.id
+    @task.runner_id = 0
 
     respond_to do |format|
       if @task.save
@@ -41,6 +77,8 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
+    @task.runner_id = current_user.id
+    #@man.man = 15
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
@@ -49,6 +87,29 @@ class TasksController < ApplicationController
         format.html { render :edit }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def acceptTask
+    @task.runner_id = current_user.id
+    @task.save
+    #format.html { redirect_to @task, notice: 'Task was successfully accepted.' }
+    respond_to do |format|
+      format.html { redirect_to @task, notice: 'Task was successfully accepted.' }
+      format.json { render :show, status: :ok, location: @task }
+    end
+  end
+
+  def unaccept
+  end
+
+  def unacceptTask
+    @task.runner_id = 0
+    @task.save
+    #format.html { redirect_to @task, notice: 'Task was successfully accepted.' }
+    respond_to do |format|
+      format.html { redirect_to @task, notice: 'Task was successfully unaccepted.' }
+      format.json { render :show, status: :ok, location: @task }
     end
   end
 
@@ -65,7 +126,12 @@ class TasksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
-      @task = Task.find(params[:id])
+      begin
+        @task = Task.find(params[:id])
+      rescue
+        redirect_to :error404
+      ensure
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,0 +1,28 @@
+<!-- PAE form_for(@task) do |f| PA-->
+<%= form_for @task, :url => url_for(:controller => 'tasks', :action => 'unacceptTask') do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<!--   <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div> -->
+  <p>Hey there <%= current_user.email %>, welcome back! You're unique ID number is: <%= current_user.id %>.</p>
+  <p>Hey there you are about to unaccept the task: <b><%= @task.title %></b>.</p>
+  <p>Make sure you let the poster know that you can no longer complete the task, message him!</p>
+  <p>To review the task info please <%= link_to 'click here', @task %>.</p>
+  <br><br>
+  <p>Are you sure you wish to unaccept this task? (doing this a lot will give you a bad rep) </p>
+  <div class="actions">
+    <%= f.submit 'Yes, unfortunately I need to unaccept.'%>
+  </div>
+<% end %>

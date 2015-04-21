@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+  <p>Hey there <%= current_user.email %>, welcome back! You're unique ID number is: <%= current_user.id %>.</p>
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
@@ -19,10 +20,7 @@
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
+  <!--<div class="field"><%= f.label :user_id %><br><%= f.number_field :user_id %></div>-->
   <div class="field">
     <%= f.label :payment_description %><br>
     <%= f.text_field :payment_description %>
@@ -31,10 +29,7 @@
     <%= f.label :category %><br>
     <%= f.text_field :category %>
   </div>
-  <div class="field">
-    <%= f.label :runner_id %><br>
-    <%= f.number_field :runner_id %>
-  </div>
+  <!--<div class="field"><%= f.label :runner_id %><br><%= f.number_field :runner_id %></div>-->
   <div class="actions">
     <%= f.submit %>
   </div>

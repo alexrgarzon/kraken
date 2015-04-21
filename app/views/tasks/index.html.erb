@@ -25,9 +25,17 @@
         <td><%= task.payment_description %></td>
         <td><%= task.category %></td>
         <td><%= task.runner_id %></td>
+        <!--<td><%= link_to 'Accept', task, method: :put, data: { confirm: 'Are you sure you want to accept this task?' } %></td>-->
+        <% if user_signed_in? && (task.runner_id == 0) %>
+          <td><%= link_to 'Accept', accept_task_path(task) %></td>
+        <% end %>
         <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if user_signed_in? && (current_user.admin || current_user.id == task.user_id) %>
+          <td><%= link_to 'Edit', edit_task_path(task) %></td>
+         <% end %>
+        <% if user_signed_in? && (current_user.admin || current_user.id == task.user_id) %>
+          <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure you want to delete this task?' } %></td>
+         <% end %>
       </tr>
     <% end %>
   </tbody>

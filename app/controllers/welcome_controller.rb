@@ -10,4 +10,7 @@ class WelcomeController < ApplicationController
   		@myPublishedTasks = nil
   	end
   end
+
+  def error404
+  end
 end

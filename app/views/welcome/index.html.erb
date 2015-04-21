@@ -32,9 +32,14 @@
             <td><%= task.payment_description %></td>
             <td><%= task.category %></td>
             <td><%= task.runner_id %></td>
+            <td><%= link_to 'Unaccept', unaccept_task_path(task) %></td>
             <td><%= link_to 'Show', task %></td>
-            <td><%= link_to 'Edit', edit_task_path(task) %></td>
-            <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% if current_user.admin || current_user.id == task.user_id %>
+              <td><%= link_to 'Edit', edit_task_path(task) %></td>
+            <% end %>
+            <% if current_user.admin || current_user.id == task.user_id %>
+              <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

@@ -3,6 +3,22 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :tasks
+  #get '/tasks/:id/accept' => "accept#task"
+  #get '/accept/task' => "accept#task"
+  
+  get '/tasks/:id/accept' => 'tasks#accept', :as => :accept_task
+  patch '/tasks/:id/acceptTask' => 'tasks#acceptTask', :as => :acceptTask_task
+  #get '/tasks/:id/accept', 'tasks#accept'
+  #match '/tasks/:id/accept' => 'tasks#accept', :as => :accept_task
+
+  #match 'account/edit' => 'users#edit', :as => :edit_user
+
+  get '/tasks/:id/unaccept' => 'tasks#unaccept', :as => :unaccept_task
+  patch '/tasks/:id/unacceptTask' => 'tasks#unacceptTask', :as => :unacceptTask_task
+
+
+  get '/error404' => 'welcome#error404', :as => :error404
+
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
