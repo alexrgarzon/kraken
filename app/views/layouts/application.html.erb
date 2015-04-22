@@ -6,12 +6,17 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+  </script>
+<![endif]-->
 </head>
 <body>
 
+<div class="container">
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-
+</div>
 <% if user_signed_in? %> <!--###########-->
 
 <header class="navbar navbar-fixed-top navbar-inverse">
@@ -19,13 +24,12 @@
 
 <nav>
 	<ul class="nav navbar-nav navbar-left">
-		<li><%= link_to "Squid Runner", '#', id: "logo" %></li>
+		<li><%= link_to "Kraken", welcome_index_path, id: "logo" %></li>
 	</ul>
 	<ul class="nav navbar-nav navbar-right">
 		<li><%= link_to "Home",   controller: '/welcome' %></li>
 		<li><%= link_to "Open Tasks", controller: '/tasks', action:"index" %></li>
-		<li><%= link_to "Dummy",   '#' %></li>
-		<li><%= link_to "Dummy",   '#' %></li>
+		<li><%= link_to "Create Task", new_task_path %></li>
 		<li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
 	</ul>
 </nav>
@@ -38,12 +42,12 @@
 <div class="container">
 <nav>
 <ul class="nav navbar-nav navbar-left">
-		<li><%= link_to "Squid Runner", controller: '/welcome', id: "logo" %></li>
+		<li><%= link_to "Kraken", controller: '/welcome', id: "logo" %></li>
 	</ul>
   <ul class="nav navbar-nav navbar-right">
     <li><%= link_to "Home",   controller: '/welcome' %></li>
     <li><%= link_to "Open Tasks", controller: '/tasks', action:"index" %></li>
-    <li><%= link_to "Dummy",   '#' %></li>
+    <li><%= link_to "About",   'http://www.princeton.edu/~yc4' %></li>
     <li><%= link_to "Sign up", new_user_registration_path %></li>
     <li><%= link_to('Login', new_user_session_path)  %></li>
   </ul>
@@ -51,12 +55,25 @@
 </div>
 </header>
 
-<% end %> <!--###########-->
-
-
-
+<% end %>
 
 <%= yield %>
 
 </body>
+
+<footer class="footer">
+  <div class="container">
+  <ul class="nav navbar-nav navbar-left">
+    The <a href="http://www.princeton.edu/~yc4">Kraken</a>
+    by <a href="http://www.eddible.net/">Alex, Eddie and Zhengyang </a>
+  </ul>
+  <nav>
+    <ul "nav navbar-nav navbar-right">
+      <li><%= link_to "COS333",   'https://www.cs.princeton.edu/courses/archive/spring15/cos333/' %></li>
+    </ul>
+  </nav>
+</div>
+</footer>
+
+
 </html>

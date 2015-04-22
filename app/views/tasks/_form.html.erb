@@ -1,3 +1,4 @@
+<div class="container">
 <%= form_for(@task) do |f| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
@@ -34,3 +35,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+</div>
