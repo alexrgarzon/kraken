@@ -1,0 +1,28 @@
+<!-- PAE form_for(@task) do |f| PA-->
+<%= form_for @task, :url => url_for(:controller => 'tasks', :action => 'markdoneTask') do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<!--   <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div> -->
+  <p>Hey there <%= current_user.email %>, welcome back! You're unique ID number is: <%= current_user.id %>.</p>
+  <p>Hey there you are about to mark as done the task: <b><%= @task.title %></b>.</p>
+  <p>Make sure you that the task has been fully completed before marking it as done!</p>
+  <p>To review the task info please <%= link_to 'click here', @task %>.</p>
+  <br><br>
+  <p>Are you sure you wish to mark this task as done? </p>
+  <div class="actions">
+    <%= f.submit 'Yes, this task is done! Yay!'%>
+  </div>
+<% end %>

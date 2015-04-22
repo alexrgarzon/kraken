@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   patch '/tasks/:id/unacceptTask' => 'tasks#unacceptTask', :as => :unacceptTask_task
 
 
+  get '/tasks/:id/markdone' => 'tasks#markdone', :as => :markdone_task
+  patch '/tasks/:id/markdoneTask' => 'tasks#markdoneTask', :as => :markdoneTask_task
+
   get '/error404' => 'welcome#error404', :as => :error404
 
   resources :users

@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:accept, :acceptTask, :unaccept, :unacceptTask, :show, :edit, :update, :destroy]
+  before_action :set_task, only: [:accept, :acceptTask, :unaccept, :unacceptTask, :markdone, :markdoneTask, :show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
   before_filter :only => [:new, :create] do 
@@ -18,13 +18,16 @@ class TasksController < ApplicationController
   end
 
   before_filter only: [:accept,:acceptTask] do
-    redirect_to :tasks unless current_user && @task.runner_id==0 && current_user.id != @task.runner_id
+    redirect_to :tasks unless current_user && @task.runner_id==0 && current_user.id != @task.user_id
   end
 
   before_filter only: [:unaccept,:unacceptTask] do
-    redirect_to :tasks unless current_user && @task.runner_id!=0 && current_user.id == @task.runner_id
+    redirect_to :tasks unless current_user && @task.status==0 && current_user.id == @task.runner_id
   end
 
+  before_filter only: [:markdone,:markdoneTask] do
+    redirect_to :tasks unless current_user && (current_user.id == @task.user_id || current_user.id == @task.runner_id) && (@task.status == 1)
+  end
 
   # GET /tasks
   # GET /tasks.json
@@ -62,6 +65,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user_id = current_user.id
     @task.runner_id = 0
+    @task.status = 0
 
     respond_to do |format|
       if @task.save
@@ -78,6 +82,7 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1.json
   def update
     @task.runner_id = current_user.id
+    @task.status = 1
     #@man.man = 15
     respond_to do |format|
       if @task.update(task_params)
@@ -92,6 +97,7 @@ class TasksController < ApplicationController
 
   def acceptTask
     @task.runner_id = current_user.id
+    @task.status = 1
     @task.save
     #format.html { redirect_to @task, notice: 'Task was successfully accepted.' }
     respond_to do |format|
@@ -105,6 +111,21 @@ class TasksController < ApplicationController
 
   def unacceptTask
     @task.runner_id = 0
+    @task.status = 0
+    @task.save
+    #format.html { redirect_to @task, notice: 'Task was successfully accepted.' }
+    respond_to do |format|
+      format.html { redirect_to @task, notice: 'Task was successfully unaccepted.' }
+      format.json { render :show, status: :ok, location: @task }
+    end
+  end
+
+  def markdone
+
+  end
+
+  def markdoneTask
+    @task.status = 2
     @task.save
     #format.html { redirect_to @task, notice: 'Task was successfully accepted.' }
     respond_to do |format|

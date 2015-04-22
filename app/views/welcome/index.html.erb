@@ -9,17 +9,18 @@
 
   <p>Hey there <%= current_user.email %>, welcome back! You're unique ID number is: <%= current_user.id %>.</p>
   </br></br>
-  <h5>Tasks you accepted:</h5>
-  <% if !@myAcceptedTasks.empty? %>
+  <h5>Tasks you completed:</h5>
+  <% if !@myCompletedTasks.empty? %>
     <table>
       <thead>
         <tr>
           <th>Description</th>
           <th>Title</th>
           <th>User</th>
-          <th>Payment description</th>
+          <th>PaymentDescription</th>
           <th>Category</th>
           <th>Runner</th>
+          <th>Status</th>
           <th colspan="3"></th>
         </tr>
       </thead>
@@ -33,6 +34,49 @@
             <td><%= task.payment_description %></td>
             <td><%= task.category %></td>
             <td><%= task.runner_id %></td>
+            <td><%= task.status %></td>
+            <td><%= link_to 'Show', task %></td>
+            <% if current_user.admin || current_user.id == task.user_id %>
+              <td><%= link_to 'Edit', edit_task_path(task) %></td>
+            <% end %>
+            <% if current_user.admin || current_user.id == task.user_id %>
+              <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <h6> ---You have yet to complete a task, people are waiting for your help!--- </h6>
+  <% end %>
+  </br></br>
+  <h5>Tasks you accepted:</h5>
+  <% if !@myAcceptedTasks.empty? %>
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Title</th>
+          <th>User</th>
+          <th>PaymentDescription</th>
+          <th>Category</th>
+          <th>Runner</th>
+          <th>Status</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @myAcceptedTasks.each do |task| %>
+          <tr>
+            <td><%= task.description %></td>
+            <td><%= task.title %></td>
+            <td><%= task.user_id %></td>
+            <td><%= task.payment_description %></td>
+            <td><%= task.category %></td>
+            <td><%= task.runner_id %></td>
+            <td><%= task.status %></td>
+            <td><%= link_to 'MarkDone', markdone_task_path(task) %></td>
             <td><%= link_to 'Unaccept', unaccept_task_path(task) %></td>
             <td><%= link_to 'Show', task %></td>
             <% if current_user.admin || current_user.id == task.user_id %>
@@ -51,16 +95,16 @@
   </br></br>
   <h5>Tasks you published: </h5>
   <% if !@myPublishedTasks.empty? %>
-  hello
     <table>
       <thead>
         <tr>
           <th>Description</th>
           <th>Title</th>
           <th>User</th>
-          <th>Payment description</th>
+          <th>PaymentDescription</th>
           <th>Category</th>
           <th>Runner</th>
+          <th>Status</th>
           <th colspan="3"></th>
         </tr>
       </thead>
@@ -74,6 +118,8 @@
             <td><%= task.payment_description %></td>
             <td><%= task.category %></td>
             <td><%= task.runner_id %></td>
+            <td><%= task.status %></td>
+            <td><%= link_to 'Mark Done', markdone_task_path(task) %></td>
             <td><%= link_to 'Show', task %></td>
             <td><%= link_to 'Edit', edit_task_path(task) %></td>
             <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
