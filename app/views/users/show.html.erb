@@ -1,5 +1,10 @@
+<div class="container">
+<div class="center jumbotron squidb" style="">
 <p id="notice"><%= notice %></p>
-
+<h1>Profile</h1>
+<div class="divider">
+  <p> Hello <%= current_user.first_name %>! </p>
+  <p>This is your profile page. You can edit by clicking the edit button. </p>
 <p>
   <strong>First name:</strong>
   <%= @user.first_name %>
@@ -17,3 +22,6 @@
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+</div>
+</div>
+</div>

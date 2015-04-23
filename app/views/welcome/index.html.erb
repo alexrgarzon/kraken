@@ -1,17 +1,17 @@
 <div class="container">
-<div class="center jumbotron squidb" style="">
+<div class="center jumbotron" style="">
 <h3>Squid Runner: The Superior Task Publishing Service</h3>
-
+<div class="divider"></div>
 
 
   <% if user_signed_in? %>
 
 
-  <p>Hey there <%= current_user.email %>, welcome back! You're unique ID number is: <%= current_user.id %>.</p>
+  <p>Hey there <%= current_user.email %>, welcome back! You're unique ID number is: <%= current_user.id %></p>
   </br></br>
   <h5>Tasks you completed:</h5>
   <% if !@myCompletedTasks.empty? %>
-    <table>
+  <div align="center"><table>
       <thead>
         <tr>
           <th>Description</th>
@@ -46,13 +46,14 @@
         <% end %>
       </tbody>
     </table>
+  </div>
   <% else %>
     <h6> ---You have yet to complete a task, people are waiting for your help!--- </h6>
   <% end %>
   </br></br>
   <h5>Tasks you accepted:</h5>
   <% if !@myAcceptedTasks.empty? %>
-    <table>
+  <div align="center"><table>
       <thead>
         <tr>
           <th>Description</th>
@@ -89,13 +90,14 @@
         <% end %>
       </tbody>
     </table>
+  </div>
   <% else %>
     <h6> ---You have yet to accept a task, people are waiting for your help!--- </h6>
   <% end %>
   </br></br>
   <h5>Tasks you published: </h5>
   <% if !@myPublishedTasks.empty? %>
-    <table>
+  <div align="center">  <table>
       <thead>
         <tr>
           <th>Description</th>
@@ -105,7 +107,7 @@
           <th>Category</th>
           <th>Runner</th>
           <th>Status</th>
-          <th colspan="3"></th>
+          <th colspan="10"></th>
         </tr>
       </thead>
 
@@ -129,6 +131,7 @@
         <% end %>
       </tbody>
     </table>
+  </div>
   <% else %>
   <h6> ---You have yet to publish a task, people are waiting to help you!--- </h6>
   <% end %>
@@ -137,7 +140,7 @@
 
 	<% else %>
   </br>
-  <p>Hey there, log in or sign up to start Squid Running!</p>
+  <p>Hey there, <%= link_to 'log in', new_user_session_path %> or <%= link_to 'sign up', new_user_registration_path %> to start Squid Running!</p>
 
 	<% end %>
 
