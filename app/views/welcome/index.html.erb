@@ -26,7 +26,7 @@
       </thead>
 
       <tbody>
-        <% @myAcceptedTasks.each do |task| %>
+        <% @myCompletedTasks.each do |task| %>
           <tr>
             <td><%= task.description %></td>
             <td><%= task.title %></td>
@@ -119,7 +119,9 @@
             <td><%= task.category %></td>
             <td><%= task.runner_id %></td>
             <td><%= task.status %></td>
-            <td><%= link_to 'Mark Done', markdone_task_path(task) %></td>
+            <% if task.status == 1 %>
+              <td><%= link_to 'Mark Done', markdone_task_path(task) %></td>
+            <% end %>
             <td><%= link_to 'Show', task %></td>
             <td><%= link_to 'Edit', edit_task_path(task) %></td>
             <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
