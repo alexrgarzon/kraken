@@ -12,11 +12,12 @@
 <![endif]-->
 </head>
 <body>
-
-<div class="container"><div align="center">
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-</div></div>
+<div class="container">
+<div align="center">
+<div class="notice alert-success"><%= notice %>
+</div>
+</div>
+</div>
 <% if user_signed_in? %> <!--###########-->
 
 <header class="navbar navbar-fixed-top navbar-inverse">
@@ -28,6 +29,7 @@
 	</ul>
 	<ul class="nav navbar-nav navbar-right">
 		<li><%= link_to "Home",   controller: '/welcome' %></li>
+    <li><%= link_to "Tutorial",   welcome_index_path %></li>
 		<li><%= link_to "Open Tasks", controller: '/tasks', action:"index" %></li>
 		<li><%= link_to "Create Task", new_task_path %></li>
 		<li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
@@ -46,8 +48,8 @@
 	</ul>
   <ul class="nav navbar-nav navbar-right">
     <li><%= link_to "Home",   controller: '/welcome' %></li>
+    <li><%= link_to "Tutorial",   welcome_index_path %></li>
     <li><%= link_to "Open Tasks", controller: '/tasks', action:"index" %></li>
-    <li><%= link_to "About",   welcome_index_path %></li>
     <li><%= link_to "Sign up", new_user_registration_path %></li>
     <li><%= link_to('Login', new_user_session_path)  %></li>
   </ul>
