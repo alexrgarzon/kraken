@@ -45,16 +45,17 @@ Rails.application.configure do
 
   #more devise
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = false
+  config.action_mailer.perform_deliveries = true
+
+
   config.action_mailer.smtp_settings = {
-  address: "smtp.gmail.",
-  #port: 2525,
+  address: "smtp.gmail.com",
   port: 587,
-  domain: ENV["GMAIL_DOMAIN"],#{}"gmail.com",#ENV["GMAIL_DOMAIN"],
+    domain: 'gmail.com',
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: ENV["GMAIL_USERNAME"],#{}"krakenrunner",#ENV["GMAIL_USERNAME"],
-  password: ENV["GMAIL_PASSWORD"]#{}"123feifeifei"#ENV["GMAIL_PASSWORD"]
+    user_name: 'krakenrunner',
+    password: '123feifeifei'
   }
 
   
