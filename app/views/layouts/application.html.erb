@@ -6,18 +6,23 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+  <!-- Bootstrap Core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="css/agency.css" rel="stylesheet">
   <!--[if lt IE 9]>
   <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
   </script>
 <![endif]-->
 </head>
 <body>
-<div class="container">
-<div align="center">
-<div class="notice alert-success"><%= notice %>
-</div>
-</div>
-</div>
+<span align="center" class="notice alert-success"><%= notice %>
+</span>
 <% if user_signed_in? %> <!--###########-->
 
 <header class="navbar navbar-fixed-top navbar-inverse">
@@ -38,13 +43,14 @@
 </div>
 </header>
 
-<% else %> <!--###########-->
 
-<header class="navbar navbar-fixed-top navbar-inverse">
+
+<% else %> <!--###########-->
+<nav class="navbar navbar-fixed-top navbar-inverse">
 <div class="container">
 <nav>
 <ul class="nav navbar-nav navbar-left">
-		<li><%= link_to "Kraken", controller: '/welcome', id: "logo" %></li>
+		<li><a class="navbar-brand page-scroll" href="#page-top"><%= link_to "Kraken", controller: '/welcome', id: "logo" %></a></li>
 	</ul>
   <ul class="nav navbar-nav navbar-right">
     <li><%= link_to "Home",   controller: '/welcome' %></li>
@@ -55,27 +61,32 @@
   </ul>
 </nav>
 </div>
-</header>
-
+</nav>
 <% end %>
 
 <%= yield %>
 
 </body>
 
-<footer class="footer">
-  <div class="container">
-  <ul class="nav navbar-nav navbar-left">
-    The <a href="http://www.princeton.edu/~yc4">Kraken</a>
-    by <a href="http://www.eddible.net/">Alex, Eddie and Zhengyang </a>
-  </ul>
-  <nav>
-    <ul "nav navbar-nav navbar-right">
-      <li><%= link_to "COS333",   'https://www.cs.princeton.edu/courses/archive/spring15/cos333/' %></li>
-    </ul>
-  </nav>
-</div>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <span class="copyright">Copyright &copy; Kraken 2015</span>
+            </div>
+            <div class="col-md-4">
+              <p> Made with Love from Alex, Eddie, Zhengyang </p>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-inline quicklinks">
+                    <li><a href="#">Privacy Policy</a>
+                    </li>
+                    <li><a href="#">Terms of Use</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </footer>
-
 
 </html>

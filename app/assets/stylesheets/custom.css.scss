@@ -4,7 +4,7 @@
 /* universal */
 
 body {
-  padding-top: 60px;
+  padding-top: 0px;
 }
 
 section {
@@ -22,7 +22,9 @@ textarea {
 .center h1 {
   margin-bottom: 10px;
 }
-
+/*
+#container { background: #F5F5DC; }
+*/
 /* header */
 
 #logo {
@@ -68,6 +70,8 @@ p {
   line-height: 1.7em;
 }
 
+
+
 /* footer */
 
 footer {
@@ -98,6 +102,7 @@ footer ul li {
   float: left;
   margin-left: 15px;
 }
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
