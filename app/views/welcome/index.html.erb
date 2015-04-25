@@ -2,7 +2,9 @@
 
   <% if user_signed_in? %>
 
-
+  <div class="container">
+    <div class="center jumbotron" style="">
+  <h1> Task Summary</h1>    
   <p>Hey there <%= current_user.first_name %>, welcome back! You're unique ID number is: <%= current_user.id %></p>
   </br></br>
   <h5>Tasks you completed:</h5>
@@ -131,8 +133,8 @@
   <% else %>
   <h6> ---You have yet to publish a task, people are waiting to help you!--- </h6>
   <% end %>
-
-
+</div>
+</div>
 
 	<% else %>
 

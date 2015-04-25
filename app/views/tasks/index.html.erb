@@ -3,7 +3,7 @@
 <% provide(:title, 'Task List') %>
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Tasks</h1>
+<h1>Open Tasks</h1>
 
 <div align="center"><table>
   <thead>
@@ -31,7 +31,7 @@
         <td><%= task.status %></td>
         <!--<td><%= link_to 'Accept', task, method: :put, data: { confirm: 'Are you sure you want to accept this task?' } %></td>-->
         <% if user_signed_in? && (current_user.id == task.user_id || current_user.id == task.runner_id) && (task.status == 1)%>
-          <td><%= link_to 'MarkDone', markdone_task_path(task) %></td>
+          <td><%= link_to 'Mark Done', markdone_task_path(task) %></td>
         <% end %>
         <% if user_signed_in? && (current_user.id == task.runner_id) && (task.status == 1) %>
           <%= link_to 'Unaccept', unaccept_task_path(task) %>
