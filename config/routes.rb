@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   patch '/tasks/:id/markdoneTask' => 'tasks#markdoneTask', :as => :markdoneTask_task
 
   get '/error404' => 'welcome#error404', :as => :error404
+  get 'tutorial' => 'welcome#tutorial', :as => :tutorial
 
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.

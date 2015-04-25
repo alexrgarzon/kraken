@@ -15,4 +15,8 @@ class WelcomeController < ApplicationController
 
   def error404
   end
+
+  def tutorial
+  end
+
 end

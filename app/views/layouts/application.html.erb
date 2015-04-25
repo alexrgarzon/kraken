@@ -34,7 +34,7 @@
 	</ul>
 	<ul class="nav navbar-nav navbar-right">
 		<li><%= link_to "Home",   controller: '/welcome' %></li>
-    <li><%= link_to "Tutorial",   welcome_index_path %></li>
+    <li><%= link_to "Tutorial",   tutorial_path %></li>
 		<li><%= link_to "Open Tasks", controller: '/tasks', action:"index" %></li>
 		<li><%= link_to "Create Task", new_task_path %></li>
     <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
@@ -55,7 +55,7 @@
 	</ul>
   <ul class="nav navbar-nav navbar-right">
     <li><%= link_to "Home",   controller: '/welcome' %></li>
-    <li><%= link_to "Tutorial",   welcome_index_path %></li>
+    <li><%= link_to "Tutorial",   tutorial_path %></li>
     <li><%= link_to "Open Tasks", controller: '/tasks', action:"index" %></li>
     <li><%= link_to "Sign up", new_user_registration_path %></li>
     <li><%= link_to('Login', new_user_session_path)  %></li>
