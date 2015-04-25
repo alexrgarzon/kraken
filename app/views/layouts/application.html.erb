@@ -30,13 +30,14 @@
 
 <nav>
 	<ul class="nav navbar-nav navbar-left">
-		<li><%= link_to "Kraken", welcome_index_path, id: "logo" %></li>
+		<li><%= link_to "SquidRunner", welcome_index_path, id: "logo" %></li>
 	</ul>
 	<ul class="nav navbar-nav navbar-right">
 		<li><%= link_to "Home",   controller: '/welcome' %></li>
     <li><%= link_to "Tutorial",   welcome_index_path %></li>
 		<li><%= link_to "Open Tasks", controller: '/tasks', action:"index" %></li>
 		<li><%= link_to "Create Task", new_task_path %></li>
+    <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
 		<li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
 	</ul>
 </nav>
@@ -50,7 +51,7 @@
 <div class="container">
 <nav>
 <ul class="nav navbar-nav navbar-left">
-		<li><a class="navbar-brand page-scroll" href="#page-top"><%= link_to "Kraken", controller: '/welcome', id: "logo" %></a></li>
+		<li><a class="navbar-brand page-scroll" href="#page-top"><%= link_to "SquidRunner", controller: '/welcome', id: "logo" %></a></li>
 	</ul>
   <ul class="nav navbar-nav navbar-right">
     <li><%= link_to "Home",   controller: '/welcome' %></li>
@@ -75,7 +76,7 @@
                 <span class="copyright">Copyright &copy; Kraken 2015</span>
             </div>
             <div class="col-md-4">
-              <p> Made with Love from Alex, Eddie, Zhengyang </p>
+              <span class="copyright"> Made with Love from Alex, Eddie, Zhengyang </span>
             </div>
             <div class="col-md-4">
                 <ul class="list-inline quicklinks">
