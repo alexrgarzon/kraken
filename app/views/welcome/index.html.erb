@@ -15,7 +15,7 @@
           <th>Description</th>
           <th>Title</th>
           <th>User</th>
-          <th>PaymentDescription</th>
+          <th>Payment Description</th>
           <th>Category</th>
           <th>Runner</th>
           <th>Status</th>
@@ -26,8 +26,8 @@
       <tbody>
         <% @myCompletedTasks.each do |task| %>
           <tr>
-            <td><%= task.description %></td>
-            <td><%= task.title %></td>
+            <td title = '<%= task.description %>'><%= task.description.first(40) %></td>
+            <td title = '<%= task.title %>'><%= task.title.first(40) %></td>
             <td><%= task.user_id %></td>
             <td><%= task.payment_description %></td>
             <td><%= task.category %></td>
@@ -57,7 +57,7 @@
           <th>Description</th>
           <th>Title</th>
           <th>User</th>
-          <th>PaymentDescription</th>
+          <th>Payment Description</th>
           <th>Category</th>
           <th>Runner</th>
           <th>Status</th>
@@ -68,8 +68,8 @@
       <tbody>
         <% @myAcceptedTasks.each do |task| %>
           <tr>
-            <td><%= task.description %></td>
-            <td><%= task.title %></td>
+            <td title = '<%= task.description %>'><%= task.description.first(40) %></td>
+          <td title = '<%= task.title %>'><%= task.title.first(40) %></td>
             <td><%= task.user_id %></td>
             <td><%= task.payment_description %></td>
             <td><%= task.category %></td>
@@ -101,7 +101,7 @@
           <th>Description</th>
           <th>Title</th>
           <th>User</th>
-          <th>PaymentDescription</th>
+          <th>Payment Description</th>
           <th>Category</th>
           <th>Runner</th>
           <th>Status</th>
@@ -112,8 +112,8 @@
       <tbody>
         <% @myPublishedTasks.each do |task| %>
           <tr>
-            <td><%= task.description %></td>
-            <td><%= task.title %></td>
+            <td title = '<%= task.description %>'><%= task.description.first(40) %></td>
+          <td title = '<%= task.title %>'><%= task.title.first(40) %></td>
             <td><%= task.user_id %></td>
             <td><%= task.payment_description %></td>
             <td><%= task.category %></td>

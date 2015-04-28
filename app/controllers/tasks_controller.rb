@@ -14,7 +14,7 @@ class TasksController < ApplicationController
   end
 
   before_filter only: [:destroy] do 
-    redirect_to :welcome_index unless current_user && current_user.admin? #&& current_user.admin?
+    redirect_to :welcome_index unless (current_user && current_user.admin?) #&& current_user.admin?
   end
 
   before_filter only: [:accept,:acceptTask] do

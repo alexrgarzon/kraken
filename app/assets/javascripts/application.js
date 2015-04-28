@@ -12,6 +12,9 @@
 //
 //= require jquery
 
+
+//= require underscore
+//= require gmaps/google
 //= require bootstrap-sprockets
 //= require bootstrap
 //= require jquery_ujs

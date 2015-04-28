@@ -8,6 +8,13 @@ gem 'autoprefixer-rails'
 #added by ARG
 gem 'ruby'
 
+#make js load
+gem "jquery-turbolinks"
+
+#gem 'gmaps4rails'
+gem 'gmaps4rails'
+gem 'geocoder'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
