@@ -33,6 +33,10 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = Task.all
+    @hash = Gmaps4rails.build_markers(@tasks) do |task, marker|
+      marker.lat task.latitude
+      marker.lng task.longitude
+    end
   end
 
   # GET /tasks/1
@@ -157,6 +161,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:description, :title, :user_id, :payment_description, :category, :runner_id)
+      params.require(:task).permit(:description, :title, :user_id, :payment_description, :category, :runner_id, :address, :location)
     end
 end
