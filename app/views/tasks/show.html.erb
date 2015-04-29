@@ -27,7 +27,11 @@
 
 <p>
   <strong>Category:</strong>
-  <%= @task.category %>
+  <% if @task.category %>
+    <%= link_to @task.category.name, @task.category %>
+  <% else %>
+    none
+  <% end %>
 </p>
 
 <p>

@@ -2,18 +2,18 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:accept, :acceptTask, :unaccept, :unacceptTask, :markdone, :markdoneTask, :show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
-  before_filter :only => [:new, :create] do 
+  before_filter :only => [:new, :create] do
     redirect_to :welcome_index unless current_user #&& current_user.admin?
-  end 
+  end
 
   #before_filter redirect_to :welcome_index unless current_user, only: [:new, :create]
   #before_filter :redirect, only: [:new, :create]
 
-  before_filter only: [:edit, :update] do 
+  before_filter only: [:edit, :update] do
     redirect_to :welcome_index unless current_user && current_user.id == @task.user_id || current_user.admin?
   end
 
-  before_filter only: [:destroy] do 
+  before_filter only: [:destroy] do
     redirect_to :welcome_index unless (current_user && current_user.admin?) #&& current_user.admin?
   end
 
@@ -157,6 +157,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:description, :title, :user_id, :payment_description, :category, :runner_id)
+      params.require(:task).permit(:description, :title, :user_id, :payment_description, :category, :runner_id, :category_id)
     end
 end
