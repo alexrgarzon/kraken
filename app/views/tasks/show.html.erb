@@ -17,7 +17,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @task.user_id %>
+  <%= userAsString(@task.user_id) %>
 </p>
 
 <p>
@@ -27,12 +27,16 @@
 
 <p>
   <strong>Category:</strong>
-  <%= @task.category %>
+  <% if @task.category %>
+    <%= link_to @task.category.name, @task.category %>
+  <% else %>
+    none
+  <% end %>
 </p>
 
 <p>
   <strong>Runner:</strong>
-  <%= @task.runner_id %>
+  <%= userAsString(@task.runner_id) %>
 </p>
 
 <%= link_to 'Accept', accept_task_path(@task) %> |

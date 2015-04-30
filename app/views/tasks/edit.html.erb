@@ -2,9 +2,9 @@
 <div class="center jumbotron squidb" style="">
 <h1>Editing Task</h1>
 
-<%= render 'form' %>
+<%= render 'formEdit' %>
 
 <%= link_to 'Show', @task %> |
-<%= link_to 'Back', tasks_path %>
+<%= link_to 'Back', tasks_path, 'data-no-turbolink' => true %>
 </div>
 </div>

@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  resources :categories
   get 'welcome/index'
 
   devise_for :users
   resources :tasks
   #get '/tasks/:id/accept' => "accept#task"
   #get '/accept/task' => "accept#task"
-  
+
   get '/tasks/:id/accept' => 'tasks#accept', :as => :accept_task
   patch '/tasks/:id/acceptTask' => 'tasks#acceptTask', :as => :acceptTask_task
   #get '/tasks/:id/accept', 'tasks#accept'

@@ -29,3 +29,19 @@ user.password = 'asdfasdf'
 user.password_confirmation = 'asdfasdf'
 user.admin = false
 user.save!
+
+cat = Category.new
+cat.name = 'Laundry'
+cat.save!
+
+cat = Category.new
+cat.name = 'Food'
+cat.save!
+
+cat = Category.new
+cat.name = '(Wo)Manpower'
+cat.save!
+
+cat = Category.new
+cat.name = 'Misc'
+cat.save!

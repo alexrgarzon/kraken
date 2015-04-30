@@ -1,0 +1,45 @@
+<div class="container">
+<%= form_for(@task) do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>Hey there <%= current_user.email %>, welcome back! You're unique ID number is: <%= current_user.id %>.</p>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <!--<div class="field"><%= f.label :user_id %><br><%= f.number_field :user_id %></div>-->
+  <div class="field">
+    <%= f.label :payment_description %><br>
+    <%= f.text_field :payment_description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="form-group">
+  <%= f.label :category %>
+  <%= f.collection_select :category_id, Category.all, :id, :name, {
+      include_blank: "Please select category..." }, { class: 'form-control' } %>
+</div>
+  <!--<div class="field"><%= f.label :runner_id %><br><%= f.number_field :runner_id %></div>-->
+  <div class="actions">
+    <%= f.submit "Update Task", :class => "btn btn-xl" %>
+  </div>
+<% end %>
+
+</div>

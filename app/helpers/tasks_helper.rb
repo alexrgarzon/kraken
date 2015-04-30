@@ -1,16 +1,32 @@
 module TasksHelper
 
-	def statusAsString(taskNum)
-		statusString = 'Open'
-		if(taskNum == 1)
-			statusString = 'In Progress'
-		elsif(taskNum == 2)
-			statusString = 'Completed'
+	def userAsString(userId)
+		userString = 'None'
+		if(userId > 0)
+			userString = User.find(userId).email
+			# userObj = User.where(id: userId)
+			# user.Obj do |user| 
+			# 	userString = user.email
+			# end
+			# userString = userObj.read_attribute('email')
 		end
-		puts statusString
+		return userString
     end
 
+
+	def statusAsString(taskId)
+		statusString = 'Open'
+		if(taskId == 1)
+			statusString = 'In Progress'
+		elsif(taskId == 2)
+			statusString = 'Completed'
+		end
+		return statusString
+    end
+
+
+
     def eddie
-    	puts 5
+    	return 5
     end
 end
