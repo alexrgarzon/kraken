@@ -16,18 +16,25 @@
   <% end %>
 
   <p>Hey there <%= current_user.email %>, welcome back! You're unique ID number is: <%= current_user.id %>.</p>
+    <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
   </div>
   <!--<div class="field"><%= f.label :user_id %><br><%= f.number_field :user_id %></div>-->
   <div class="field">
     <%= f.label :payment_description %><br>
     <%= f.text_field :payment_description %>
+  </div>
+
+  <div class="form-group">
+  <%= f.label :category %>
+  <%= f.collection_select :category_id, Category.all, :id, :name, {
+      include_blank: "Please select task category..." }, { class: 'form-control' } %>
   </div>
 
   <div class="field">
@@ -40,7 +47,7 @@
       <%= button_tag "View Address", class: "btn btn-xl", id:"viewAddress" %>
     </div>
     <div class ="col-md-4">
-      If below address is correct, please continue. Your entered address: <p id="insertText"></p><p id="insertText2"></p>
+      Publish the task only after visually verifying the task address is correct. Your entered address: <p id="insertText"></p><p id="insertText2"></p>
     </div>
   </div>
   <br>
@@ -53,12 +60,6 @@
 
     </div>
   </div>
-
-  <div class="form-group">
-  <%= f.label :category %>
-  <%= f.collection_select :category_id, Category.all, :id, :name, {
-      include_blank: "Please select category..." }, { class: 'form-control' } %>
-</div>
   <!--<div class="field"><%= f.label :runner_id %><br><%= f.number_field :runner_id %></div>-->
   <div class="actions">
     <%= f.submit "Create Task", :class => "btn btn-xl" %>
@@ -72,7 +73,7 @@
   $('#viewAddress').click(function(){
     event.preventDefault();
     //$('#viewAddress').hide();
-    $('#insertText').text("Hello world!");
+    //$('#insertText').text("Hello world!");
     var addressText = $('#addressTextField').val();
     $('#insertText2').text(addressText);
 

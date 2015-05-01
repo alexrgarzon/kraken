@@ -36,6 +36,12 @@ class TasksController < ApplicationController
     @hash = Gmaps4rails.build_markers(@tasks) do |task, marker|
       marker.lat task.latitude
       marker.lng task.longitude
+      marker.json({:id => task.id })
+      # marker.picture({
+      #  "url" => "/logo.png",
+      #  "width" =>  32,
+      #  "height" => 32})
+      marker.infowindow render_to_string(:partial => "taskInfo.html.erb", :locals => { :object => task})
     end
   end
 

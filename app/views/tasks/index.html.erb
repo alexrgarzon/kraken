@@ -10,8 +10,8 @@
 <div align="center"><table>
     <thead>
       <tr>
-        <th>Description</th>
         <th>Title</th>
+        <th>Description</th>
         <th>User</th>
         <th>Payment Description</th>
         <th>Category</th>
@@ -26,8 +26,8 @@
     <tbody>
       <% @tasks.each do |task| %>
         <tr>
-          <td title = '<%= task.description %>'><%= task.description.first(40) %></td>
-          <td title = '<%= task.title %>'><%= task.title.first(40) %></td>
+            <td title = '<%= task.title %>'><%= task.title.first(40) %></td>
+            <td title = '<%= task.description %>'><%= task.description.first(40) %></td>
           <td><%= userAsString(task.user_id) %></td>
           <td><%= task.payment_description %></td>
           <% if task.category %>
@@ -124,17 +124,17 @@ handler = Gmaps.build('Google');
         {
           "lat": 40.34685,
           "lng": -74.65528,
-          // "picture": {
-          //   "url": "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
-          //   "width":  36,
-          //   "height": 36
-          // },
+          "picture": {
+            "url": "intentionalerror",
+            "width":  36,
+            "height": 36
+          },
           "infowindow": "Center of campus!"
         }
       );
       markers = handler.addMarkers(<%=raw @hash.to_json %>);
       handler.map.centerOn(marker);
-      marker.setVisible(false);
+      // marker.setVisible(false);
 
     }
   );

@@ -1,0 +1,18 @@
+<p>Task Title:<%= object.title %></p>
+<p>Address:<%= object.address %></p>
+<p>Payment:<%= object.payment_description %></p>
+<p id="taskPoster"></p>
+<p id="taskStatus"></p>
+<%= button_tag "Show More(to implement)", class: "btn btn-md", id:"showMore" %>
+<%= link_to "Take me to task page!", object, 'data-no-turbolink' => true %>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		alert("in js");
+		$('#showMore').click(function(){
+			$('#showMore').hide();
+			$('#taskPoster').text("Task Poster: "+"idk");
+			$('#taskPoster').text("fuck");
+		}
+	});
+</script>
