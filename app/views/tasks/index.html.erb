@@ -46,7 +46,7 @@
             <td><%= link_to 'Mark Done', markdone_task_path(task) %></td>
           <% end %>
           <% if user_signed_in? && (current_user.id == task.runner_id) && (task.status == 1) %>
-            <%= link_to 'Unaccept', unaccept_task_path(task) %>
+            <td><%= link_to 'Unaccept', unaccept_task_path(task) %></td>
           <% end %>
           <% if user_signed_in? && (task.status == 0) && (current_user.id != task.user_id)%>
             <td><%= link_to 'Accept', accept_task_path(task) %></td>
