@@ -26,8 +26,8 @@
       <tbody>
         <% @myCompletedTasks.each do |task| %>
           <tr>
-            <td title = '<%= task.title %>'><%= task.title.first(40) %></td>
-            <td title = '<%= task.description %>'><%= task.description.first(40) %></td>
+            <td title = '<%= task.title %>'><%= task.title.first(20)%></td>
+            <td title = '<%= task.description %>'><%= task.description.first(20)%></td>
             <td><%= userAsString(task.user_id) %></td>
             <td><%= task.payment_description %></td>
             <% if task.category %>
@@ -72,8 +72,8 @@
       <tbody>
         <% @myAcceptedTasks.each do |task| %>
           <tr>
-            <td title = '<%= task.title %>'><%= task.title.first(40) %></td>
-            <td title = '<%= task.description %>'><%= task.description.first(40) %></td>
+            <td title = '<%= task.title %>'><%= task.title.first(20) %></td>
+            <td title = '<%= task.description %>'><%= task.description.first(20) %>...</td>
             <td><%= userAsString(task.user_id) %></td>
             <td><%= task.payment_description %></td>
             <% if task.category %>
@@ -109,19 +109,19 @@
           <th>Title</th>
           <th>Description</th>
           <th>User</th>
-          <th>Payment Description</th>
+          <th>Payment</th>
           <th>Category</th>
           <th>Runner</th>
           <th>Status</th>
-          <th colspan="10"></th>
+          <th colspan= "3"></th>
         </tr>
       </thead>
 
       <tbody>
         <% @myPublishedTasks.each do |task| %>
           <tr>
-            <td title = '<%= task.title %>'><%= task.title.first(40) %></td>
-            <td title = '<%= task.description %>'><%= task.description.first(40) %></td>
+            <td title = '<%= task.title %>'><%= task.title.first(20) %> </td>
+            <td title = '<%= task.description %>'><%= task.description.first(20) %> .. </td>
             <td><%= userAsString(task.user_id)  %></td>
             <td><%= task.payment_description %></td>
             <% if task.category %>

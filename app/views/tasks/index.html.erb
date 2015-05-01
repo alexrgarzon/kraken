@@ -13,21 +13,21 @@
         <th>Title</th>
         <th>Description</th>
         <th>User</th>
-        <th>Payment Description</th>
+        <th>Payment</th>
         <th>Category</th>
         <th>Runner</th>
         <th>Status</th>
         <th>Address</th>
         <th>Actions</th>
-        <th colspan="3"></th>
+        <th colspan="2"></th>
       </tr>
     </thead>
 
     <tbody>
       <% @tasks.each do |task| %>
         <tr>
-            <td title = '<%= task.title %>'><%= task.title.first(40) %></td>
-            <td title = '<%= task.description %>'><%= task.description.first(40) %></td>
+            <td title = '<%= task.title %>'><%= task.title.first(20) %></td>
+            <td title = '<%= task.description %>'><%= task.description.first(20) %></td>
           <td><%= userAsString(task.user_id) %></td>
           <td><%= task.payment_description %></td>
           <% if task.category %>
@@ -70,45 +70,6 @@
 
 
   <script type="text/javascript">
-  // handler = Gmaps.build('Google');
-  // handler.buildMap({
-  //     provider: {
-  //       disableDefaultUI: true,
-  //       // auto_adjust: true,
-  //       auto_zoom: false,
-  //       // bounds: [{"lat": 44.34685, "lng": -74.65528}, {"lat": 44.34688, "lng": -74.65532}],
-  //       // draggable: true,
-  //       // center_latitude : 44.34685,
-  //       // center_longitude: -74.65528,
-  //       zoom: 15
-  //       // pass in other Google Maps API options here
-  //     },
-  //     internal: {
-  //       id: 'map'
-  //     }
-  //   },
-  //   function(){
-  //     markers = handler.addMarkers([
-  //       {
-  //         //"zoom": 5,
-  //         //"auto_zoom": false,
-  //         "lat": 40.34685,
-  //         "lng": -74.65528,
-  //         // "picture": {
-  //         //   "url": "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
-  //         //   "width":  36,
-  //         //   "height": 36
-  //         // },
-  //         "infowindow": "hello!"
-  //       }
-  //     ]);
-  //     handler.bounds.extendWith(markers);
-  //     handler.fitMapToBounds();
-  //     //handler.map.centerOn(markers);
-  //     //handler.getMap.setZoom(3);
-
-  //   }
-  // );
 handler = Gmaps.build('Google');
       handler.buildMap({
       provider: {
