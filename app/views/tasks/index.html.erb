@@ -10,14 +10,14 @@
 <div align="center"><table>
     <thead>
       <tr>
-        <th><%= link_to "Title", :sort => "title"%></th>
-        <th><%= link_to "Description", :sort => "description"%></th>
-        <th><%= link_to "User", :sort => "user_id"%></th>
-        <th><%= link_to "Payment", :sort => "payment_description"%></th>
-        <th><%= link_to "Category", :sort => "category"%></th>
-        <th><%= link_to "Runner", :sort => "runner_id"%></th>
-        <th><%= link_to "Status", :sort => "status"%></th>
-        <th><%= link_to "Address", :sort => "address"%></th>
+        <th><%= sortable "title"%></th>
+        <th><%= sortable "description"%></th>
+        <th><%= sortable "user_id", "User" %></th>
+        <th><%= sortable "payment_description", "Payment" %></th>
+        <th><%= sortable "category"%></th>
+        <th><%= sortable "runner_id", "Runner" %></th>
+        <th><%= sortable "status"%></th>
+        <th><%= sortable "address"%></th>
         <th colspan="3"></th>
       </tr>
     </thead>

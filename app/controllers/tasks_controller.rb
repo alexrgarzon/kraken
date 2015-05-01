@@ -31,9 +31,20 @@ class TasksController < ApplicationController
 
   # GET /tasks
   # GET /tasks.json
+
+  def sort_column
+    Task.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
   def index
     #@tasks = Task.all
-    @tasks = Task.order(params[:sort])
+    #@tasks = Task.order(params[:sort] && params[:direction])
+    @tasks = Task.order(sort_column + " " + sort_direction)
+    #@tasks = Task.order(params[:sort])
     @hash = Gmaps4rails.build_markers(@tasks) do |task, marker|
       marker.lat task.latitude
       marker.lng task.longitude
