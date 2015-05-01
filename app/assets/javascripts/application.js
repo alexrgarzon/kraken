@@ -12,9 +12,10 @@
 //
 
 
+//= require gmaps/google
 //= require jquery
 //= require underscore
-//= require gmaps/google
+
 //= require bootstrap-sprockets
 //= require bootstrap
 
