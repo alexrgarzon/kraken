@@ -32,7 +32,8 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    #@tasks = Task.all
+    @tasks = Task.order(params[:sort])
     @hash = Gmaps4rails.build_markers(@tasks) do |task, marker|
       marker.lat task.latitude
       marker.lng task.longitude

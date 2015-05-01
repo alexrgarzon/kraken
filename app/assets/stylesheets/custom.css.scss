@@ -155,7 +155,7 @@ td {
 }
 
 /* Cells in even rows (2,4,6...) are one color */
-tr:nth-child(even) td { background: #F1F1F1; }
+tr:nth-child(even) td { background: #3399FF; }
 
 /* Cells in odd rows (1,3,5...) are another (excludes header cells)  */
 tr:nth-child(odd) td { background: #FEFEFE; }
