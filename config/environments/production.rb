@@ -78,12 +78,12 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # for devise
-  #config.action_mailer.default_url_options = { :host => 'secret-chamber-2450.herokuapp.com' }
-  config.action_mailer.default_url_options = { :host => 'sheltered-inlet-6025.herokuapp.com'}
+  config.action_mailer.default_url_options = { :host => 'secret-chamber-2450.herokuapp.com' }
+  #config.action_mailer.default_url_options = { :host => 'sheltered-inlet-6025.herokuapp.com'}
 
   #might need this too
-  #Rails.application.routes.default_url_options[:host] = 'secret-chamber-2450.herokuapp.com'
-  Rails.application.routes.default_url_options[:host] = 'sheltered-inlet-6025.herokuapp.com'
+  Rails.application.routes.default_url_options[:host] = 'secret-chamber-2450.herokuapp.com'
+  #Rails.application.routes.default_url_options[:host] = 'sheltered-inlet-6025.herokuapp.com'
 
   #more devise
   config.action_mailer.delivery_method = :smtp
