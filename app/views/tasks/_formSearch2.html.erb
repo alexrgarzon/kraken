@@ -1,0 +1,28 @@
+
+
+
+<div class="container row ">
+
+  <div class="field col-md-1"></div>
+  <div class="field col-md-8">
+  <!--<%= label_tag(:search, "Search for:") %>-->
+    <%= text_field_tag "search", nil, placeholder: "Enter your space-seperated task table search terms here...", class: "text-search" %>
+  </div>
+
+  <div class="actions col-md-2">
+    <%= button_tag "Search", :class => "btn btn-search", :id => "searchButton"%>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  $('#searchButton').click(function(){
+    event.preventDefault();
+    //$('#viewAddress').hide();
+    //$('#insertText').text("Hello world!");
+    //<%= submit_tag "Search", :class => "btn btn-search", :id => "searchButton"%>
+    alert("searched");
+    //var addressText = $('#addressTextField').val();
+    //$('#insertText2').text(addressText);
+  }
+</script>

@@ -18,7 +18,7 @@
   <p>Hey there <%= current_user.email %>, welcome back! You're unique ID number is: <%= current_user.id %>.</p>
     <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, placeholder: "Task Title", autofocus: true %>
   </div>
 
   <div class="field">

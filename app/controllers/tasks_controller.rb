@@ -22,7 +22,7 @@ class TasksController < ApplicationController
   end
 
   before_filter only: [:unaccept,:unacceptTask] do
-    redirect_to :tasks unless current_user && @task.status==0 && current_user.id == @task.runner_id
+    redirect_to :tasks unless current_user && @task.status==1 && current_user.id == @task.runner_id
   end
 
   before_filter only: [:markdone,:markdoneTask] do
@@ -43,9 +43,32 @@ class TasksController < ApplicationController
   def index
     #@tasks = Task.all
     #@tasks = Task.order(params[:sort] && params[:direction])
-    @tasks = Task.order(sort_column + " " + sort_direction)
-    #@tasks = Task.order(params[:sort])
-    @hash = Gmaps4rails.build_markers(@tasks) do |task, marker|
+    #if(params[:q]!=nil)
+    @searchParam = params[:search]
+    Rails.logger.debug("My object: #{params[:search]}")
+    #Rails.logger.debug("My object: #{@params[:q]}")
+    #Rails.logger.debug("My object: #{something}")
+    Rails.logger.debug("My object: #{@something}")
+    #if (params[:search] != nil)
+      
+    #else
+    #end
+    #else
+    #end
+    # in view: <!--<%= form_tag("/search", method: "get") do %>-->
+    #@tasks = @tasks.order(sort_column + " " + sort_direction)
+    ###
+    @openTasks = Task.order(sort_column + " " + sort_direction)
+    @openTasks = @openTasks.searchOpen(params[:search])
+
+    @inProgressTasks = Task.order(sort_column + " " + sort_direction)
+    @inProgressTasks = @inProgressTasks.getInProgress()
+
+    @completedTasks = Task.order(sort_column + " " + sort_direction)
+    @completedTasks = @completedTasks.getCompleted()
+
+    #@openTasks = Task.order(params[:sort])
+    @hash = Gmaps4rails.build_markers(@openTasks) do |task, marker|
       marker.lat task.latitude
       marker.lng task.longitude
       marker.json({:id => task.id })
@@ -80,6 +103,21 @@ class TasksController < ApplicationController
   # GET /tasks/1/edit
   def edit
   end
+
+  # def search
+  #   @tasks = Task.order(sort_column + " " + sort_direction)
+  #   #@tasks = Task.order(params[:sort])
+  #   @hash = Gmaps4rails.build_markers(@tasks) do |task, marker|
+  #     marker.lat task.latitude
+  #     marker.lng task.longitude
+  #     marker.json({:id => task.id })
+  #     # marker.picture({
+  #     #  "url" => "/logo.png",
+  #     #  "width" =>  32,
+  #     #  "height" => 32})
+  #     marker.infowindow render_to_string(:partial => "taskInfo.html.erb", :locals => { :object => task})
+  #   end
+  # end
 
   # POST /tasks
   # POST /tasks.json
@@ -151,7 +189,7 @@ class TasksController < ApplicationController
     @task.save
     #format.html { redirect_to @task, notice: 'Task was successfully accepted.' }
     respond_to do |format|
-      format.html { redirect_to @task, notice: 'Task was successfully unaccepted.' }
+      format.html { redirect_to @task, notice: 'Task was successfully marked completed.' }
       format.json { render :show, status: :ok, location: @task }
     end
   end
