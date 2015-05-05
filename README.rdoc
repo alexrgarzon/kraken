@@ -26,3 +26,11 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+
+	# <%= button_tag "Show More(to implement)", class: "btn btn-md", id:"showMore" %>
+	# <%= link_to "Take me to task page!", object, 'data-no-turbolink' => true %>
+	# <%= button_to('Destroy', 'http://www.example.com',method: "delete", remote: true, data: { confirm: 'Are you sure?', disable_with: 'loading...' }) %>
+	# <%= button_to "Take me to task page!", { method: "get", action: task_path(object) },'data-no-turbolink' => true %>
+
+	<%= render_to_string(:partial => "tableBuild.html.erb", :locals => { :tasksToTable => @openTasks}) %>
