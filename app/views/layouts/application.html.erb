@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--<title>Kraken</title>-->
-  <title><%= full_title(yield(:title)) %></title>
+  <title>SquidRunner</title>
+  <!--<title><%= full_title(yield(:title)) %></title>-->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -76,7 +76,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <span class="copyright">Copyright &copy; Kraken 2015</span>
+                <span class="copyright">Copyright &copy; SquidRunner 2015</span>
             </div>
             <div class="col-md-4">
               <span class="copyright"> Made with Love from Alex, Eddie, Zhengyang </span>
@@ -85,7 +85,7 @@
                 <ul class="list-inline quicklinks">
                     <li><a href="#">Privacy Policy</a>
                     </li>
-                    <li><a href="#">Terms of Use</a>
+                    <li><%= link_to 'Terms of Service', termsOfService_path%>
                     </li>
                 </ul>
             </div>

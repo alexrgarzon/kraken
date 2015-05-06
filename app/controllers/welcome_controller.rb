@@ -19,4 +19,7 @@ class WelcomeController < ApplicationController
   def tutorial
   end
 
+  def termsOfService
+  end
+
 end

@@ -97,8 +97,8 @@ Rails.application.configure do
     domain: 'gmail.com',
   authentication: "plain",
   enable_starttls_auto: true,
-    user_name: 'krakenrunner',
-    password: '123feifeifei'
+    user_name: 'squidrunnercrew',#ENV["GMAIL_USERNAME"]
+    password: '123feifeifei'#ENV["GMAIL_PASSWORD"]
   }
 
   #you have to tell Rails to serve the assets itself. Server software (eg. Nginx or Apache) do it for you on environments like Heroku, but locally you should let Rails do it.

@@ -155,9 +155,27 @@ td {
 }
 
 /* Cells in even rows (2,4,6...) are one color */
-tr:nth-child(even) td { background: #FF66CC; }
+tr:nth-child(even) td { background: #E6E6E6; }
 
 /* Cells in odd rows (1,3,5...) are another (excludes header cells)  */
 tr:nth-child(odd) td { background: #FEFEFE; }
 
 tr td:hover { background: #E6E6E6; color: #095EDD; } /* Hover cell effect! */
+
+td{
+    max-width:200px;
+    word-wrap:break-word;
+    text-align:left;
+}
+
+td .tdField{
+    max-width:100px;
+}
+
+.hidden{
+  visibility: hidden;
+  display: none;
+}
+
+
+

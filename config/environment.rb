@@ -13,6 +13,6 @@ Rails.application.initialize!
 #    :port => 587,
 #    :domain => "gmail.com",
 #    :authentication => :login,
-#    :user_name => "krakenrunner",
+#    :user_name => "squidrunnercrew",
 #    :password => "123feifeifei"
 #  }

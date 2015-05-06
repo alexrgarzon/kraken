@@ -11,7 +11,35 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-    @category = Category.find(params[:id])
+    @category = Category.find(params[:id]).id
+    @categoryName = Category.find(params[:id]).name
+    @searchParam = params[:search]
+    Rails.logger.debug("My category: #{@category}")
+    Rails.logger.debug("My searchParam: #{@searchParam}")
+
+    #@openTasks = Task.order(sort_column + " " + sort_direction)
+    @openTasks = Task.searchCatOpen(@searchParam,@category)
+
+    #@inProgressTasks = Task.order(sort_column + " " + sort_direction)
+    #@inProgressTasks = @inProgressTasks.getCatInProgress(@category)
+    @inProgressTasks = Task.getCatInProgress(@category)
+
+
+    #@completedTasks = Task.order(sort_column + " " + sort_direction)
+    #@completedTasks = @completedTasks.getCatCompleted(@category)
+    @completedTasks = Task.getCatCompleted(@category)
+
+    @hash = Gmaps4rails.build_markers(@openTasks) do |task, marker|
+      marker.lat task.latitude
+      marker.lng task.longitude
+      marker.json({:id => task.id })
+      # marker.picture({
+      #  "url" => "/logo.png",
+      #  "width" =>  32,
+      #  "height" => 32})
+      marker.infowindow render_to_string(:partial => "taskCatInfo.html.erb", :locals => { :object => task})
+    end
+
   end
 
   # GET /categories/new
@@ -61,6 +89,14 @@ class CategoriesController < ApplicationController
       format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def sort_column
+    Task.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
   private

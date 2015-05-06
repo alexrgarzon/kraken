@@ -34,3 +34,5 @@ Please feel free to use a different markup language if you do not plan to run
 	# <%= button_to "Take me to task page!", { method: "get", action: task_path(object) },'data-no-turbolink' => true %>
 
 	<%= render_to_string(:partial => "tableBuild.html.erb", :locals => { :tasksToTable => @openTasks}) %>
+
+<%= link_to @task.category.name, @task.category %>

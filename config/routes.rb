@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get '/error404' => 'welcome#error404', :as => :error404
   get 'tutorial' => 'welcome#tutorial', :as => :tutorial
   #get 'search' => 'tasks#search', :as => :search
+  get 'termsOfService' => 'welcome#termsOfService', :as => :termsOfService
 
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,8 @@
+development:
+  GMAIL_USERNAME: squidrunnercrew
+  GMAIL_EMAIL: squidrunnercrew@gmail.com
+  GMAIL_PASSWORD: 123feifeifei
+production:
+  GMAIL_USERNAME: squidrunnercrew
+  GMAIL_EMAIL: squidrunnercrew@gmail.com
+  GMAIL_PASSWORD: 123feifeifei

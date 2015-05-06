@@ -85,6 +85,9 @@ class TasksController < ApplicationController
   def show
   end
 
+  def showByCategory
+  end
+
   # PUT /tasks/1
   # PUT /tasks/1.json
   def accept

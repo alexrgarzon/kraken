@@ -16,13 +16,13 @@
     <tbody>
       <% tasksToTable.each do |task| %>
         <tr>
-            <td title = '<%= task.title %>'><%= task.title.first(20) %></td>
-            <td title = '<%= task.description %>'><%= task.description.first(20) %></td>
+          <td title = '<%= task.title %>'><%= task.title.first(20) %></td>
+          <td title = '<%= task.description %>'><%= task.description.first(20) %></td>
           <td><%= userAsString(task.user_id) %></td>
           <td><%= task.payment_description %></td>
           <% if task.category %>
              <td>
-             <%= link_to task.category.name, task.category, 'data-no-turbolink' => true %></td>
+             <%= link_to task.category.name, task.category %></td>
            <% else %>
               <td> None </td>
            <% end %>

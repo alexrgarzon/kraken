@@ -8,45 +8,50 @@
 <h1>View Task</h1>
 <p></p>
 <p></p>
-<p>
-  <strong>Title:</strong>
-  <%= @task.title %>
-</p>
+<div align="center">
+<table>
+<thead>
+<tr>
+<th>Task Fields</th>
+<th>Task Info</th>
+</tr>
+</thead>
+<tr>
+  <td class="tdField"><strong>Title:</strong></td>
+  <td class="tdData"><%= @task.title %></td>
+</tr>
 
-<p>
-  <strong>Description:</strong>
-  <%= @task.description %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= userAsString(@task.user_id) %>
-</p>
-
-<p>
-  <strong>Payment description:</strong>
-  <%= @task.payment_description %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <% if @task.category %>
+<tr>
+  <td class="tdField"><strong>Description:</strong></td>
+  <td class="tdData"><%= @task.description %></td>
+</tr>
+<tr>
+  <td class="tdField"><strong>User:</strong></td>
+  <td class="tdData"><%= userAsString(@task.user_id) %></td>
+</tr>
+<tr>
+  <td class="tdField"><strong>Payment description:</strong></td>
+  <td class="tdData"><%= @task.payment_description %></td>
+</tr>
+<tr>
+  <td class="tdField"><strong>Category:</strong></td>
+  <td class="tdData"><% if @task.category %>
     <%= link_to @task.category.name, @task.category %>
   <% else %>
     none
-  <% end %>
-</p>
-
-<p>
-  <strong>Runner:</strong>
-  <%= userAsString(@task.runner_id) %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @task.address %>
-</p>
-
+  <% end %></td>
+</tr>
+<tr>
+  <td class="tdField"><strong>Runner:</strong></td>
+  <td class="tdData"><%= userAsString(@task.runner_id) %></td>
+</tr>
+<tr>
+  <td class="tdField"><strong>Address:</strong></td>
+  <td class="tdData"><%= @task.address %></td>
+</tr>
+</table>
+</div>
+<br>
 <div align="center">
   <div style='width: 800px;'>
     <div id="map" style='width: 800px; height: 400px;'></div>
