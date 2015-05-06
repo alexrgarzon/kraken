@@ -48,7 +48,7 @@
           <% else %>
           <td></td>
           <% end %>
-          <td><%= link_to 'Show', task %></td>
+          <td><%= link_to 'Show', task, 'data-no-turbolink' => true %></td>
           <% if user_signed_in? && (current_user.admin? || current_user.id == task.user_id) %>
             <td><%= link_to 'Edit', edit_task_path(task) %></td>
           <% else %>
