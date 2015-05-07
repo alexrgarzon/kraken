@@ -144,8 +144,8 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
-    @task.runner_id = current_user.id
-    @task.status = 1
+    #@task.runner_id = current_user.id
+    #@task.status = 1
     #@man.man = 15
     respond_to do |format|
       if @task.update(task_params)
