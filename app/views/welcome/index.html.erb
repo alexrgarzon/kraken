@@ -5,7 +5,7 @@
   <div class="container">
   <div class="center jumbotron" style="">
   <h1> Task Summary</h1>
-  <p>Hey there <%= current_user.first_name %>, welcome back! You're unique ID number is: <%= current_user.id %></p>
+  <p>Hey there <%= current_user.email %>, welcome! You're unique ID number is: <%= current_user.id %></p>
   </br></br>
   <h5>Tasks you completed:</h5>
   <% if !@myCompletedTasks.empty? %>
@@ -105,7 +105,7 @@
     <h6> ---You have yet to accept a task, people are waiting for your help!--- </h6>
   <% end %>
   </br></br>
-  <h5>Tasks you published (hover your cursor over cell to see full description): </h5>
+  <h5>Tasks you published:</h5>
   <% if !@myPublishedTasks.empty? %>
   <div align="center">  <table>
       <thead>
@@ -153,6 +153,8 @@
   <% else %>
   <h6> ---You have yet to publish a task, people are waiting to help you!--- </h6>
   <% end %>
+  <br>
+  Hover your cursor over cells to see full descriptions.
 </div>
 </div>
 

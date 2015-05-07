@@ -19,7 +19,7 @@
   <p>Hey there <%= current_user.email %>, welcome back! You're unique ID number is: <%= current_user.id %>.</p>
   <p>Hey there you are about to accept the task: <b><%= @task.title %></b>.</p>
   <p>Make sure you will be able to complete the task according to the poster's requirements!</p>
-  <p>To review the task info please <%= link_to 'click here', @task, 'data-no-turbolink' => true %>.</p>
+  <p>To review the task info please <%= link_to 'click here', @task %>.</p>
   <br><br>
   <p>Are you sure you wish to accept this task? </p>
   <div class="actions">

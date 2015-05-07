@@ -22,7 +22,7 @@
           <td><%= task.payment_description %></td>
           <% if task.category %>
              <td>
-             <%= link_to task.category.name, task.category, 'data-no-turbolink' => true %></td>
+             <%= link_to task.category.name, task.category %></td>
            <% else %>
               <td> None </td>
            <% end %>
@@ -48,7 +48,7 @@
           <% else %>
           <td></td>
           <% end %>
-          <td><%= link_to 'Show', task, 'data-no-turbolink' => true %></td>
+          <td><%= link_to 'Show', task %></td>
           <% if user_signed_in? && (current_user.admin? || current_user.id == task.user_id) %>
             <td><%= link_to 'Edit', edit_task_path(task) %></td>
           <% else %>
