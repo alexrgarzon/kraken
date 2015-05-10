@@ -22,7 +22,7 @@
           <td><%= task.payment_description %></td>
           <% if task.category %>
              <td>
-             <%= link_to task.category.name, task.category %></td>
+             <%= link_to task.category.name, task.category, 'data-no-turbolink' => true %></td>
            <% else %>
               <td> None </td>
            <% end %>
@@ -34,23 +34,23 @@
           <td><%= task.address %></td>
           <!--<td><%= link_to 'Accept', task, method: :put, data: { confirm: 'Are you sure you want to accept this task?' } %></td>-->
           <% if user_signed_in? && (current_user.id == task.user_id || current_user.id == task.runner_id) && (task.status == 1)%>
-            <td><%= link_to 'Mark Done', markdone_task_path(task) %></td>
+            <td><%= link_to 'Mark Done', markdone_task_path(task), 'data-no-turbolink' => true %></td>
           <% else %>
           <td></td>
           <% end %>
           <% if user_signed_in? && (current_user.id == task.runner_id) && (task.status == 1) %>
-            <td><%= link_to 'Unaccept', unaccept_task_path(task) %></td>
+            <td><%= link_to 'Unaccept', unaccept_task_path(task), 'data-no-turbolink' => true %></td>
           <% else %>
           <td></td>
           <% end %>
           <% if user_signed_in? && (task.status == 0) && (current_user.id != task.user_id)%>
-            <td><%= link_to 'Accept', accept_task_path(task) %></td>
+            <td><%= link_to 'Accept', accept_task_path(task), 'data-no-turbolink' => true %></td>
           <% else %>
           <td></td>
           <% end %>
-          <td><%= link_to 'Show', task %></td>
+          <td><%= link_to 'Show', task, 'data-no-turbolink' => true %></td>
           <% if user_signed_in? && (current_user.admin? || current_user.id == task.user_id) %>
-            <td><%= link_to 'Edit', edit_task_path(task) %></td>
+            <td><%= link_to 'Edit', edit_task_path(task), 'data-no-turbolink' => true %></td>
           <% else %>
           <td></td>
            <% end %>
