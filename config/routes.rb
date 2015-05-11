@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :categories
   get 'welcome/index'
 
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
   #get 'search' => 'tasks#search', :as => :search
   get 'termsOfService' => 'welcome#termsOfService', :as => :termsOfService
 
+
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -37,6 +39,7 @@ Rails.application.routes.draw do
   #devise_for :users, controllers: { sessions: "users/sessions" }
 
   #root to: "home#index"
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

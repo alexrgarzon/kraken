@@ -1,4 +1,5 @@
 class WelcomeController < ApplicationController
+
   def index
   	#@myTasks = Task.find(:all, :conditions => { :user_id => current_user.id })
   	#@myTasks = Task.find({ :user_id => [current_user.id] })
